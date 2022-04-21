@@ -1,0 +1,38 @@
+@import "../../../node_modules/@kww/base-styles/variables";
+@import "../../../node_modules/@kww/base-styles/colors";
+
+.navigation__element {
+  position: relative;
+
+  + .navigation__element {
+    margin-left: 20px;
+  }
+}
+
+.navigation__element-title {
+  font-family: $font-heading;
+  color: $gray;
+  text-decoration: none;
+
+  &:visited,
+  &:hover,
+  &:active,
+  &:link {
+    color: $gray;
+  }
+
+}
+
+.navigation__submenu {
+  position: absolute;
+  padding-top: 20px;
+  max-width: 200px;
+
+  .navigation__element {
+    margin-left: 0;
+  }
+}
+
+.navigation {
+  display: flex;
+}

@@ -1,0 +1,40 @@
+@import '../../../node_modules/@kww/base-styles/variables';
+@import '../../../node_modules/@kww/base-styles/colors';
+
+.feature {
+	width: 20rem;
+	padding: 10px 20px;
+	border-radius: 5px;
+	color: black;
+
+	a {
+		color: black;
+	}
+}
+
+.feature__header {
+	path {
+		color: gray;
+	}
+	border-bottom: 5px solid;
+	img {
+		transform: translate(-16px, 1px);
+	}
+}
+
+.feature__title {
+	margin: 1rem 0;
+	font-size: 1.6rem;
+	font-weight: 700;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: #626362;
+	line-height: normal;
+}
+
+.feature__description {
+	margin: 1rem 0;
+}
+
+.feature__button {
+	color: black;
+}

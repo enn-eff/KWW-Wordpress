@@ -1,0 +1,121 @@
+//@import "../node_modules/@kww/base-styles/animations";
+//@import "../node_modules/@kww/base-styles/breakpoints";
+@import "../node_modules/@kww/base-styles/colors";
+//@import "../node_modules/@kww/base-styles/mixins";
+@import "../node_modules/@kww/base-styles/variables";
+@import "modern-css-reset/dist/reset";
+@import url($google-font-url);
+
+body {
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font: 100%/1.5 $font-text;
+  color: $gray;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.17em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 0.83em;
+}
+
+h6 {
+  font-size: 0.75em;
+}
+
+body,
+input,
+button {
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  line-height: 1.5;
+  margin: 0 0 1em;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.indent p {
+  margin: 0;
+}
+
+.indent p + p {
+  text-indent: 2em;
+}
+
+a,
+a:visited {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote::before {
+  content: "\201C";
+  display: inline-block;
+  padding-right: 0.4em;
+}
+
+.heading {
+  font-family: $font-heading;
+}
+
+.text {
+  font-family: $font-text;
+}
+
+.card-box {
+  box-shadow: 0 1px 8px rgb(0 0 0 / 15%);
+  padding: 20px 30px;
+  margin-bottom: 30px;
+
+  > div:last-child,
+  div:last-child > div {
+    margin-bottom: 0 !important;
+  }
+}

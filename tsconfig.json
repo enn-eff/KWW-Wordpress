@@ -1,0 +1,7 @@
+{
+	"references": [
+		{ "path": "packages/components" },
+		{ "path": "packages/base-styles" },
+	],
+	"files": []
+}

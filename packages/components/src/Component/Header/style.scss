@@ -1,0 +1,25 @@
+@import "../../../node_modules/@kww/base-styles/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: $content-width--regular;
+  height: $header-height;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $header-margin--top;
+}
+
+.header__branding-logo,
+.header__funding-logo {
+  width: auto;
+}
+
+.header__branding-logo {
+  height: 45px;
+}
+
+.header__funding-logo {
+  height: 65px;
+}

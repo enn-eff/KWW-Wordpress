@@ -1,0 +1,47 @@
+@import "./colors";
+
+/**
+ * Typography.
+ */
+
+$google-font-url: "https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&family=Montserrat&display=swap";
+$fira-mono: "Fira Mono", serif;
+$montserrat: "Montserrat", sans-serif;
+
+$font-heading: $fira-mono;
+$font-text: $montserrat;
+
+/**
+ * Dimensions.
+ */
+
+//$icon-size: 24px;
+//$button-size: 36px;
+//$button-size-small: 24px;
+//$header-height: 60px;
+//$nav-sidebar-width: 300px;
+//$admin-bar-height: 32px;
+//$admin-bar-height-big: 46px;
+//$admin-sidebar-width: 160px;
+//$admin-sidebar-width-big: 190px;
+//$admin-sidebar-width-collapsed: 36px;
+//$modal-min-width: 360px;
+//$spinner-size: 16px;
+
+/**
+ * React Native specific.
+ * These variables do not appear to be used anywhere else.
+ */
+
+$content-width--regular: 1280px;
+$content-width--small: 920px;
+
+$header-height: 80px;
+$header-margin--top: 20px;
+
+//$mobile-header-toolbar-height: 44px;
+//$mobile-header-toolbar-expanded-height: 52px;
+//$mobile-floating-toolbar-height: 44px;
+//$mobile-floating-toolbar-margin: 8px;
+//$mobile-color-swatch: 48px;
+

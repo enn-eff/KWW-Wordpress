@@ -1,0 +1,10 @@
+@import "../../../node_modules/@kww/base-styles/variables";
+@import "../../../node_modules/@kww/base-styles/colors";
+
+.feature-section {
+  display: flex;
+
+  .feature + .feature {
+	margin-left: 20px;
+  }
+}

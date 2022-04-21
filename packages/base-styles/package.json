@@ -1,0 +1,10 @@
+{
+  "name": "@kww/base-styles",
+  "version": "0.1.0",
+  "description": "Base SCSS utilities and variables for KWW.",
+  "author": "DFKI",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

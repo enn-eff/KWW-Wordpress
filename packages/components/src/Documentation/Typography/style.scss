@@ -1,0 +1,18 @@
+@import "../../../node_modules/@kww/base-styles/colors";
+
+mark,
+.mark {
+  background-color: transparent;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    background-color: $orange;
+    height: 40%;
+    width: 105%;
+    left: -2.5%;
+    bottom: 0;
+    z-index: -1;
+    content: " ";
+  }
+}

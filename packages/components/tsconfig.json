@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+	"target": "es5",
+	"lib": [
+	  "dom",
+	  "dom.iterable",
+	  "esnext"
+	],
+	"allowJs": true,
+	"skipLibCheck": true,
+	"allowSyntheticDefaultImports": true,
+	"strict": true,
+	"forceConsistentCasingInFileNames": true,
+	"noFallthroughCasesInSwitch": true,
+	"module": "esnext",
+	"moduleResolution": "node",
+	"resolveJsonModule": true,
+	"isolatedModules": true,
+	"noEmit": true,
+	"jsx": "react-jsx",
+	"outDir": "build",
+	"declaration": true,
+	"declarationDir": ".",
+	"downlevelIteration": true,
+  },
+  "include": [
+	"src",
+	"src/media.d.ts"
+  ],
+  "exclude": [
+	"storybook",
+	"node_modules",
+	"3rd",
+	"build"
+  ]
+}

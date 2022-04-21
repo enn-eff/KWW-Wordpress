@@ -1,0 +1,14 @@
+@import "~@kww/components/build/index";
+@import "~@kww/base-styles/variables";
+
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-kww-header {
+  min-height: $header-height;
+  margin-top: $header-margin--top;
+}

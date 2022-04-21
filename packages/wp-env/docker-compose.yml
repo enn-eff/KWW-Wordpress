@@ -1,0 +1,92 @@
+version: "3.9"
+
+services:
+  db:
+    image: mariadb:10.7
+    container_name: "kww-db"
+    ports:
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    build: .
+    image: wordpress-xdebug
+    depends_on:
+      - db
+    container_name: "kww-wordpress"
+    user: "33:33"
+    volumes:
+      - wp_data:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ../theme:/var/www/html/wp-content/themes/kww
+      - ../plugin:/var/www/html/wp-content/plugins/kww
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'SCRIPT_DEBUG', true );
+        define( 'WP_DEBUG_LOG', true );
+        define( 'WP_DEBUG_DISPLAY', true );
+
+  wordpress-cli:
+    depends_on:
+      - db
+      - wordpress
+    image: wordpress:cli
+    container_name: "kww-wordpress-cli"
+    user: "33:33"
+    restart: "no"
+    command: >
+      /bin/sh -c '
+
+      until nc -vzw 2 wordpress 80; do sleep 1; done;
+      until nc -vzw 2 db 3306; do sleep 1; done;
+
+      wp core install --url="http://localhost:8000" --title="KWW" --admin_user=admin --admin_password=password --admin_email=admin@admin.com;
+      wp plugin install all-in-one-wp-migration --activate;
+      wp plugin install gutenberg --activate;
+      wp plugin activate kww;
+      wp theme activate kww;
+
+      if [[ -f "${BACKUP_FILE_PATH}" ]]; then
+        echo "WP-CLI restore already ran. Exiting";
+        exit 1;
+      fi
+
+      if [[ -z "${WPRESS_BACKUP_URL}" || -z "${WPRESS_BACKUP_AUTH}" || -z "${WPRESS_INSTALL_URL}" ]]; then
+        echo "Parameters for WP-CLI restore unavailable (WPRESS_BACKUP_URL, WPRESS_BACKUP_AUTH, WPRESS_INSTALL_URL). Exiting";
+        exit 1;
+      fi
+
+      wp plugin install ${WPRESS_INSTALL_URL} --activate;
+      curl ${WPRESS_BACKUP_URL} -H "Authorization: ${WPRESS_BACKUP_AUTH}" -o "${BACKUP_FILE_PATH}";
+      yes | wp ai1wm restore backup.wpress;
+      '
+    volumes_from:
+      - wordpress:rw
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WPRESS_INSTALL_URL: "${WPRESS_INSTALL_URL}"
+      WPRESS_BACKUP_URL: "${WPRESS_BACKUP_URL}"
+      WPRESS_BACKUP_AUTH: "${WPRESS_BACKUP_AUTH}"
+      BACKUP_FILE_PATH: "${BACKUP_FILE_PATH}"
+
+volumes:
+  wp_data:
+  db_data:
